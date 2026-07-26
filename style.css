@@ -2014,3 +2014,274 @@ body{
     }
 
 }
+
+/* ==========================================
+   RESPONSIVE MOBILE FIX
+========================================== */
+
+@media screen and (max-width:768px){
+
+html{
+    font-size:55%;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+section{
+    padding:90px 20px 50px;
+}
+
+/* HEADER */
+
+.header{
+    padding:15px 20px;
+}
+
+.logo{
+    font-size:2.3rem;
+}
+
+#menu-icon{
+    display:block;
+    z-index:1002;
+}
+
+.navbar{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#fff;
+    display:none;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+    box-shadow:0 10px 20px rgba(0,0,0,.1);
+}
+
+.navbar.active{
+    display:flex;
+}
+
+.navbar a{
+    margin:15px 0;
+    font-size:18px;
+}
+
+/* HOME */
+
+.home{
+    display:flex;
+    flex-direction:column-reverse;
+    gap:35px;
+    text-align:center;
+}
+
+.home-content{
+    width:100%;
+}
+
+.home-content h1{
+    font-size:4rem;
+}
+
+.home-content h2{
+    font-size:2.2rem;
+}
+
+.home-content h3{
+    font-size:2rem;
+}
+
+.home-content p{
+    font-size:1.5rem;
+    line-height:2.8rem;
+}
+
+.home-img img{
+    width:240px;
+    height:240px;
+}
+
+/* BUTTON */
+
+.btn-group{
+    flex-direction:column;
+}
+
+.btn,
+.btn2{
+    width:100%;
+}
+
+/* CARD */
+
+.about-content,
+.skill-card,
+.project-card,
+.detail-box,
+.contact-card,
+.content,
+.experience-content{
+
+    width:100%;
+    padding:20px;
+
+}
+
+/* PROJECT */
+
+.project-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.project-card img{
+
+    height:220px;
+
+}
+
+/* TIMELINE */
+
+.timeline-item,
+.experience-item{
+
+    padding-left:45px;
+
+}
+
+.timeline::before,
+.experience-timeline::before{
+
+    left:15px;
+
+}
+
+.circle,
+.experience-dot{
+
+    left:2px;
+
+}
+
+/* EDUCATION */
+
+.education-gallery{
+
+    grid-template-columns:1fr;
+
+}
+
+.education-image img{
+
+    width:100%;
+    height:auto;
+
+}
+
+/* TOOLS */
+
+.tools-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+/* GALLERY */
+
+.gallery{
+
+    grid-template-columns:1fr;
+
+}
+
+.gallery-item{
+
+    width:100%;
+
+}
+
+.gallery-item img{
+
+    width:100% !important;
+    height:220px !important;
+    object-fit:contain;
+
+}
+
+/* PROJECT GALLERY */
+
+.project-gallery{
+
+    grid-template-columns:1fr;
+
+}
+
+.project-gallery img{
+
+    height:220px;
+
+}
+
+/* CERTIFICATE */
+
+.certificate-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.certificate-gallery{
+
+    justify-content:center;
+
+}
+
+.certificate-gallery img{
+
+    width:100%;
+
+}
+
+/* CONTACT */
+
+.contact-info{
+
+    grid-template-columns:1fr;
+
+}
+
+.contact-item{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+.contact-item p,
+.contact-item a{
+
+    text-align:center;
+
+}
+
+/* FOOTER */
+
+footer{
+
+    padding:25px;
+
+}
+
+img{
+
+    max-width:100%;
+    height:auto;
+
+}
+
+}
