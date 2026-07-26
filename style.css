@@ -969,8 +969,8 @@ html{
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
 }
 
 .gallery-item{
@@ -988,11 +988,12 @@ html{
 }
 
 .gallery-item img{
-    width:90px !important;
-    height:180px !important;
-    object-fit:contain !important;
+    width:600% !important;
+    height:200px !important;
+    object-fit:contain;
     display:block;
     margin:auto;
+
 }
 
 .gallery-item p{

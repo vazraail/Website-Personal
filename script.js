@@ -5,46 +5,38 @@
 const menuIcon = document.querySelector("#menu-icon");
 const navbar = document.querySelector(".navbar");
 
-menuIcon.addEventListener("click", () => {
+if (menuIcon && navbar) {
 
-    navbar.classList.toggle("active");
+    menuIcon.addEventListener("click", () => {
 
-    menuIcon.classList.toggle("fa-bars");
-    menuIcon.classList.toggle("fa-xmark");
+        navbar.classList.toggle("active");
 
-});
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-xmark");
 
-/*==========================================
-        ACTIVE NAVBAR
-==========================================*/
+    });
 
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-
-
-   menuIcon.classList.remove("fa-xmark");
-menuIcon.classList.add("fa-bars");
-navbar.classList.remove("active");
+}
 
 /*==========================================
         HEADER SHADOW
 ==========================================*/
 
-window.addEventListener("scroll",function(){
+window.addEventListener("scroll", () => {
 
     const header = document.querySelector(".header");
 
-    if(window.scrollY > 50){
+    if (!header) return;
+
+    if (window.scrollY > 50) {
 
         header.style.boxShadow =
-        "0 10px 30px rgba(232,160,191,.25)";
+            "0 10px 30px rgba(232,160,191,.25)";
 
-    }
-
-    else{
+    } else {
 
         header.style.boxShadow =
-        "0 5px 15px rgba(232,160,191,.10)";
+            "0 5px 15px rgba(232,160,191,.10)";
 
     }
 
@@ -56,43 +48,44 @@ window.addEventListener("scroll",function(){
 
 const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll",function(){
+if (topBtn) {
 
-    if(window.scrollY > 300){
+    window.addEventListener("scroll", () => {
 
-        topBtn.style.display="block";
+        if (window.scrollY > 300) {
 
-    }
+            topBtn.style.display = "block";
 
-    else{
+        } else {
 
-        topBtn.style.display="none";
+            topBtn.style.display = "none";
 
-    }
-
-});
-
-topBtn.onclick=function(){
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
+        }
 
     });
 
-};
+    topBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+
+            top: 0,
+            behavior: "smooth"
+
+        });
+
+    });
+
+}
 
 /*==========================================
         FADE ANIMATION
 ==========================================*/
 
-const observer = new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver((entries) => {
 
-    entries.forEach((entry)=>{
+    entries.forEach((entry) => {
 
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
 
             entry.target.classList.add("show");
 
@@ -102,62 +95,55 @@ const observer = new IntersectionObserver((entries)=>{
 
 });
 
-const hiddenElements = document.querySelectorAll(
-
-".about-content,.education-card,.experience-card,.project-card,.certificate-card,form"
-
-);
-
-hiddenElements.forEach((el)=>observer.observe(el));
+document.querySelectorAll(
+    ".about-content,.education-card,.experience-card,.project-card,.certificate-card,form"
+).forEach((el) => observer.observe(el));
 
 /*==========================================
         TYPING EFFECT
 ==========================================*/
 
 const text = [
-"Fresh Graduate Sistem Informasi",
-"Web Developer",
-"UI/UX Designer",
-"Database Enthusiast"
+    "Fresh Graduate Sistem Informasi",
+    "Web Developer",
+    "UI/UX Designer",
+    "Database Enthusiast"
 ];
 
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
+const typingElement = document.querySelector(".home-content h2");
 
-(function typing(){
+if (typingElement) {
 
-    if(count === text.length){
+    let count = 0;
+    let index = 0;
 
-        count = 0;
+    function typing() {
 
-    }
+        if (count >= text.length) count = 0;
 
-    currentText = text[count];
+        const currentText = text[count];
+        const letter = currentText.slice(0, ++index);
 
-    letter = currentText.slice(0,++index);
+        typingElement.innerHTML = letter;
 
-    document.querySelector(".home-content h2").innerHTML =
-    letter;
+        if (letter.length === currentText.length) {
 
-    if(letter.length === currentText.length){
+            count++;
+            index = 0;
 
-        count++;
+            setTimeout(typing, 1500);
 
-        index = 0;
+        } else {
 
-        setTimeout(typing,1500);
+            setTimeout(typing, 80);
 
-    }
-
-    else{
-
-        setTimeout(typing,80);
+        }
 
     }
 
-})();
+    typing();
+
+}
 
 /*==========================================
         SMOOTH SCROLL
@@ -165,36 +151,19 @@ let letter = "";
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    anchor.addEventListener("click", function(e){
+    anchor.addEventListener("click", function (e) {
 
         e.preventDefault();
 
-        document.querySelector(this.getAttribute("href"))
-        .scrollIntoView({
+        const target = document.querySelector(this.getAttribute("href"));
 
-            behavior:"smooth"
+        if (target) {
 
-        });
+            target.scrollIntoView({
 
-    });
+                behavior: "smooth"
 
-});
-
-document.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", function(e){
-
-        const href = this.getAttribute("href");
-
-        if(href && !href.startsWith("#")){
-
-            e.preventDefault();
-
-            document.body.classList.add("fade-out");
-
-            setTimeout(() => {
-                window.location.href = href;
-            },500);
+            });
 
         }
 
@@ -202,23 +171,30 @@ document.querySelectorAll("a").forEach(link => {
 
 });
 
-const menuIcon = document.querySelector("#menu-icon");
-const navbar = document.querySelector(".navbar");
+/*==========================================
+        PAGE TRANSITION
+==========================================*/
 
-menuIcon.onclick = () => {
+document.querySelectorAll("a").forEach(link => {
 
-    navbar.classList.toggle("active");
+    link.addEventListener("click", function (e) {
 
-    if(menuIcon.classList.contains("fa-bars")){
+        const href = this.getAttribute("href");
 
-        menuIcon.classList.remove("fa-bars");
-        menuIcon.classList.add("fa-xmark");
+        if (href && !href.startsWith("#")) {
 
-    }else{
+            e.preventDefault();
 
-        menuIcon.classList.remove("fa-xmark");
-        menuIcon.classList.add("fa-bars");
+            document.body.classList.add("fade-out");
 
-    }
+            setTimeout(() => {
 
-}
+                window.location.href = href;
+
+            }, 500);
+
+        }
+
+    });
+
+});
