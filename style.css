@@ -527,9 +527,9 @@ html{
 
 .timeline-item{
     position:relative;
-    padding-left:70px;
+    padding-left:55px;
+    margin-bottom:30px;
 }
-
 .circle{
     position:absolute;
     left:8px;
@@ -542,11 +542,11 @@ html{
 }
 
 .content{
+    width:100%;
     background:#fff;
     border-radius:20px;
-    padding:35px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
+    padding:25px;
+    overflow:hidden;
 }
 
 .content:hover{
@@ -1981,6 +1981,36 @@ body{
         margin:15px 0;
         font-size:18px;
 
+    }
+
+}
+
+@media (max-width:768px){
+
+    .timeline-item{
+        padding-left:45px;
+    }
+
+    .content{
+        width:100%;
+        padding:20px;
+    }
+
+    .content h3{
+        font-size:22px;
+        line-height:1.4;
+        word-break:normal;
+    }
+
+    .content h4{
+        font-size:17px;
+        line-height:1.5;
+        word-break:normal;
+    }
+
+    .content p{
+        font-size:15px;
+        line-height:28px;
     }
 
 }
